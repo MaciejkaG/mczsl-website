@@ -6,7 +6,7 @@ import Image from 'next/image';
 
 function NavItem(props: { href: string, mobile?: boolean, children: React.ReactNode, expanded?: boolean }) {
   return (
-    <span className={`transition-opacity delay-200 duration-300  ${props.expanded ? 'visible opacity-100' : 'invisible opacity-0'}`}>
+    <span className={`transition-opacity duration-300 motion-reduce:transition-none ${props.expanded ? 'visible opacity-100' : 'invisible opacity-0'}`}>
       <Link href={props.href}>{props.children}</Link>
     </span>
   );
