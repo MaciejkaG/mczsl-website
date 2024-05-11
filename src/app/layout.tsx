@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Lexend_Deca, Lato } from 'next/font/google';
+import { Lexend_Deca, Lato, IBM_Plex_Mono } from 'next/font/google';
 import './globals.css';
 import Navbar from '@/components/navbar';
 
@@ -10,6 +10,10 @@ const lexendDeca = Lexend_Deca({
 const lato = Lato({
   subsets: ['latin'],
   weight: ['400', '700'],
+});
+const ibmPlex = IBM_Plex_Mono({
+  subsets: ['latin'],
+  weight: ['400']
 });
 
 export const metadata: Metadata = {
@@ -27,6 +31,7 @@ export default function RootLayout({
       <body className={`${lato.className} ${lexendDeca.variable}`}>
         <Navbar />
         {children}
+        <span className={`${ibmPlex.className} text-xs flex items-center py-8 text-center justify-center text-center`}>© 2024 mc.zsł.pl // Designed by Maciejka</span>
         </body>
     </html>
   );

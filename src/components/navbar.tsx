@@ -1,36 +1,79 @@
 "use client";
 import { useEffect, useState } from 'react';
 import styles from './navbar.module.css';
+import Link from 'next/link';
+import Image from 'next/image';
+
+function NavItem(props: { href: string, mobile?: boolean, children: React.ReactNode, expanded?: boolean }) {
+  return (
+    <span className={`transition-opacity delay-200 duration-300  ${props.expanded ? 'visible opacity-100' : 'invisible opacity-0'}`}>
+      <Link href={props.href}>{props.children}</Link>
+    </span>
+  );
+}
 
 export default function Navbar() {
-    const [scrollDirection, setScrollDirection] = useState('none');
+  // Hiding the navbar when scrolling down and bringing it back when scrolling up
+  const [scrollDirection, setScrollDirection] = useState('none');
 
-    useEffect(() => {
-        let lastScrollTop = 0;
+  // For later
+  const [expanded, setExpanded] = useState(false);
 
-        const handleScroll = () => {
-            const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+  useEffect(() => {
+    let lastScrollTop = 0;
 
-            if (currentScroll > lastScrollTop) {
-                setScrollDirection('down');
-            } else {
-                setScrollDirection('up');
-            }
+    const handleScroll = () => {
+      const currentScroll = window.scrollY || document.documentElement.scrollTop;
 
-            lastScrollTop = currentScroll;
-        };
+      if (currentScroll > lastScrollTop) {
+        setScrollDirection('down');
+      } else {
+        setScrollDirection('up');
+        setExpanded(false);
+      }
 
-        window.addEventListener('scroll', handleScroll);
+      lastScrollTop = currentScroll;
+    };
 
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, []);
+    window.addEventListener('scroll', handleScroll);
 
-    return (
-        <nav className={`fixed top-0 left-0 h-14 w-full backdrop-blur-md bg-opacity-20 flex items-center gap-10 px-10 box-border text-lg font-lexend-deca font-light z-50 transition-transform ease-out duration-500 motion-reduce:transition-none ${scrollDirection === 'down' ? styles.navHidden : ''}`}>
-            <span>Strona główna</span>
-            <span>Regulamin</span>
-        </nav>
-    );
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  // Mobile navbar expanding
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    handleResize(); // Set initial value
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  const toggleExpanded = () => {
+    setExpanded(!expanded);
+  };
+
+  var showNavItems = expanded || !isMobile;
+
+  return (
+    <nav onClick={isMobile ? toggleExpanded : undefined} className={`fixed top-0 left-0 ${expanded ? 'h-full' : 'h-14'} w-full backdrop-blur-md bg-opacity-20 flex flex-col sm:flex-row items-center justify-center md:justify-normal gap-10 px-10 box-border text-lg font-lexend-deca font-light z-50 transition-transform duration-500 motion-reduce:transition-none ${scrollDirection === 'down' && styles.navHidden}`}>
+      <NavItem href="/" expanded={showNavItems}>Strona główna</NavItem>
+      <NavItem href="/regulamin" expanded={showNavItems}>Regulamin</NavItem>
+      <NavItem href="https://dc.zsł.pl/" expanded={showNavItems}>Discord</NavItem>
+      <NavItem href="https://patreon.com/zsł/" expanded={showNavItems}>Patreon</NavItem>
+
+      {isMobile && (
+        <Image alt="Menu icon" width={32} height={32} src="/menu.svg" className={`absolute top-7 left-[50%] -translate-x-[50%] -translate-y-[50%] transition-all duration-200 ${expanded && 'invisible opacity-0'}`} />
+      )}
+    </nav>
+  );
 }
