@@ -8,12 +8,13 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      fontFamily: {
+        "lexend-deca": "var(--font-lexend-deca)",
       },
-    },
+      backgroundImage: {
+        'title-gradient': 'radial-gradient(ellipse at top, var(--accent), var(--background) 70%)',
+      }
+    }
   },
   plugins: [],
 };
