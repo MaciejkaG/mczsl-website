@@ -1,18 +1,18 @@
 import Image from "next/image";
 import styles from "./screenshots.module.css";
 
-const screenshots = [
-  '/screenshot1.png',
-  '/screenshot2.png',
-  '/screenshot1.png',
-  '/screenshot2.png',
-  '/screenshot1.png',
-  '/screenshot2.png',
-  '/screenshot1.png',
-  '/screenshot2.png',
-];
-
 export default function Screenshots() {
+  const screenshots = [
+    '/screenshot1.png',
+    '/screenshot2.png',
+    '/screenshot1.png',
+    '/screenshot2.png',
+    '/screenshot1.png',
+    '/screenshot2.png',
+    '/screenshot1.png',
+    '/screenshot2.png',
+  ];
+
   return (
     <div className="relative w-full overflow-hidden my-12">
       {/* Left fade */}

@@ -12,8 +12,3 @@
   z-index: 9;
   animation: slide 30s linear infinite;
 }
-
-.slideItem {
-  flex: 0 0 auto;
-  margin-right: 1rem;
-}
