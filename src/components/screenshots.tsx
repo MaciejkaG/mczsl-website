@@ -14,7 +14,7 @@ export default function Screenshots() {
   ];
 
   return (
-    <div className="relative w-full overflow-hidden my-12">
+    <div className="hidden md:block relative w-full overflow-hidden my-12">
       {/* Left fade */}
       <div className="absolute left-0 w-2/12 h-full bg-gradient-to-r from-background to-transparent z-10" />
       {/* Right fade */}

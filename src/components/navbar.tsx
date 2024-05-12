@@ -49,7 +49,7 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
+      setIsMobile(window.innerWidth < 1280);
     };
 
     handleResize(); // Set initial value
@@ -63,8 +63,6 @@ export default function Navbar() {
   const toggleExpanded = () => {
     setExpanded(!expanded);
   };
-
-  var showNavItems = expanded || !isMobile;
 
   const [copied, setCopied] = useState(false);
 
@@ -89,16 +87,18 @@ export default function Navbar() {
       .catch(error => console.error('Failed to fetch server data:', error));
   }, []);
 
+  var showNavItems = expanded || !isMobile;
+
   return (
-    <nav onClick={isMobile ? toggleExpanded : undefined} className={`fixed top-0 left-0 ${expanded ? 'h-full' : 'h-14'} w-full backdrop-blur-md bg-opacity-10 flex flex-col sm:flex-row items-center justify-center md:justify-normal gap-10 px-10 box-border text-lg font-lexend-deca font-light z-50 transition-transform ease-out duration-500 motion-reduce:transition-none ${scrollDirection === 'down' && '-translate-y-full'}`}>
+    <nav onClick={isMobile ? toggleExpanded : undefined} className={`fixed top-0 left-0 ${expanded ? 'h-full' : 'h-14'} w-full backdrop-blur-md bg-opacity-10 flex flex-col xl:flex-row items-center justify-center xl:justify-normal gap-10 px-10 box-border text-lg font-lexend-deca font-light z-50 transition-transform ease-out duration-500 motion-reduce:transition-none ${scrollDirection === 'down' && '-translate-y-full'}`}>
       <NavItem href="/" expanded={showNavItems}>Strona główna</NavItem>
       <NavItem href="/regulamin" expanded={showNavItems}>Regulamin</NavItem>
       <NavItem href="https://dc.zsł.pl/" expanded={showNavItems}>Discord</NavItem>
       <NavItem href="https://patreon.com/zsł/" expanded={showNavItems}>Patreon</NavItem>
       <span className='ml-auto'></span>
-      {serverData && <ServerInfo data={serverData} className={expanded || !isMobile ? 'block' : 'hidden'} />}
+      {serverData && <ServerInfo data={serverData} className={showNavItems ? 'block' : 'hidden'} />}
       <Tooltip content="Skopiowano IP!" placement='bottom' closeDelay={1500} isOpen={copied} className={`bg-black bg-opacity-10 backdrop-blur-md py-1 px-4 rounded-xl text-sm`}>
-        <button onClick={copyToClipboard} className={`bg-blue-700 bg-opacity-55 py-1.5 px-5 text-sm rounded-2xl hidden sm:block`}>Skopiuj IP</button>
+        <button onClick={copyToClipboard} className={`bg-blue-700 bg-opacity-55 py-1.5 px-5 text-sm rounded-2xl ${showNavItems ? 'block' : 'hidden'}`}>Skopiuj IP</button>
       </Tooltip>
 
       {isMobile && (
