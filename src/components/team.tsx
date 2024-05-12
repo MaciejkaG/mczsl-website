@@ -15,8 +15,9 @@ export default function Team() {
     <div className="flex w-full items-center text-center flex-col">
       <h1 className="text-4xl mb-8">Poznaj administrację</h1>
       <div className="flex w-10/12 sm:w-3/4 justify-center items-center flex-col sm:flex-row">
-        <TeamMember imgUrl="/mcjk-logo.png" name="Maciejka" description="Designer / Deweloper JS / Zarządca Discorda / Zarządca infrastruktury webowej" />
-        <TeamMember imgUrl="/pingwinek.webp" name="Pingwinek" description=" / Zarządca sprzętu serwera" />
+        <TeamMember imgUrl="/mcjk-logo.png" name="Maciejka" description="Designer / Deweloper / Zarządca Discorda / Zarządca infrastruktury" />
+        <TeamMember imgUrl="/pingwinek.webp" name="Pingwinek" description="Zarządca infrastruktury / Technik serwera Minecraft" />
+        <TeamMember imgUrl="/pingwinek.webp" name="Atoseczek" description="Zarządca Discorda / Technik serwera Minecraft" />
       </div>
     </div>
   );

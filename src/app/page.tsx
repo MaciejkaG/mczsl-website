@@ -1,5 +1,6 @@
 import Slide from '@/components/slide';
 import Team from '@/components/team';
+import Screenshots from '@/components/screenshots';
 
 export default function Home() {
   return (
@@ -9,6 +10,7 @@ export default function Home() {
         <p>Nieoficjalny serwer Minecraft ZSŁ</p>
       </Slide>
       <Team />
+      <Screenshots />
       <Slide fromRight compact>
         <h1>Świetne tryby</h1>
         <p>Bedwars i survival</p>

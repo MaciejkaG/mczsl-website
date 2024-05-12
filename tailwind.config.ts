@@ -13,6 +13,10 @@ const config: Config = {
       },
       backgroundImage: {
         'title-gradient': 'radial-gradient(ellipse at top, var(--accent), var(--background) 70%)',
+      },
+      colors: {
+        'accent': 'var(--accent)',
+        'background': 'var(--background)'
       }
     }
   },

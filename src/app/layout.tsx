@@ -31,7 +31,7 @@ export default function RootLayout({
       <body className={`${lato.className} ${lexendDeca.variable}`}>
         <Navbar />
         {children}
-        <span className={`${ibmPlex.className} text-xs flex items-center py-8 text-center justify-center text-center`}>© 2024 mc.zsł.pl // Designed by Maciejka</span>
+        <span className={`${ibmPlex.className} text-xs flex items-center py-8 text-center justify-center text-center`}>© 2024 mc.zsł.pl //<a href="https://mcjk.cc/" target='_blank' className='ml-[1em] text-white hover:underline'> Designed by Maciejka</a></span>
         </body>
     </html>
   );
