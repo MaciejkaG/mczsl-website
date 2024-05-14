@@ -13,7 +13,7 @@ function TeamMember(props: { name: string, description: string, imgUrl: string, 
 function SmallTeamMember(props: { name: string, description: string, imgUrl: string, }) {
   return (
     <div className="w-1/2 sm:w-1/3 lg:w-1/5 max-w-[33vw] p-2 sm:p-4 box-border text-center flex justify-center items-center flex-col">
-      <Image src={props.imgUrl} alt="Member image" width={256} height={256} className="w-2/3 rounded-full" />
+      <Image src={props.imgUrl} alt="Member image" width={256} height={256} className="w-3/5 rounded-full" />
       <h2 className="text-xl">{props.name}</h2>
       <span>{props.description}</span>
     </div>
@@ -31,7 +31,7 @@ export default function Team() {
         <TeamMember imgUrl="/pingwinek.webp" name="Atoseczek" description="Zarządca Discorda / Technik serwera Minecraft" />
       </div>
       {/* Other people helping the server */}
-      <div className="flex w-11/12 sm:2-3/4 justify-center flex-row flex-wrap">
+      <div className="flex w-11/12 sm:w-3/4 justify-center flex-row flex-wrap">
         <SmallTeamMember imgUrl="/mcjk-logo.png" name="To jest test" description="Moderator Discorda" />
         <SmallTeamMember imgUrl="/mcjk-logo.png" name="To jest test" description="Moderator Discorda" />
         <SmallTeamMember imgUrl="/mcjk-logo.png" name="To jest test" description="Moderator Discorda" />
