@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import { Lexend_Deca, Lato, IBM_Plex_Mono } from 'next/font/google';
 import './globals.css';
 import Navbar from '@/components/navbar';
@@ -31,7 +32,7 @@ export default function RootLayout({
       <body className={`${lato.className} ${lexendDeca.variable}`}>
         <Navbar />
         {children}
-        <span className={`${ibmPlex.className} text-xs flex items-center py-8 text-center justify-center`}>© 2024 mc.zsł.pl //<a href="https://mcjk.cc/" target='_blank' className='ml-[1em] text-white hover:underline'> Designed by Maciejka</a></span>
+        <footer className={`${ibmPlex.className} text-xs flex items-center py-8 text-center justify-center`}><span>© 2024 mc.zsł.pl // <Link href="https://mcjk.cc/" target='_blank' className='text-white hover:underline'>Designed by Maciejka</Link></span></footer>
         </body>
     </html>
   );

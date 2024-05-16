@@ -30,8 +30,15 @@ export default function Screenshots() {
     //     )}
     //   </div>
     // </div>
-    <div className="w-full h-80 overflow-hidden flex justify-center items-center my-12">
-      <Image src="/screenshot1.png" alt="Server screenshot" width={1280} height={720} className="object-cover min-w-full min-h-full" />
+
+    // <div className="w-full h-80 overflow-hidden flex justify-center items-center my-12">
+    //   <Image src="/screenshot1.png" alt="Server screenshot" width={1280} height={720} className="object-cover min-w-full min-h-full" />
+    // </div>
+
+    <div className="w-full flex justify-center">
+      <div className="w-3/5 h-80 overflow-hidden flex justify-center items-center my-12 rounded-lg">
+        <Image src="/screenshot1.png" alt="Server screenshot" width={1280} height={720} className="object-cover min-w-full min-h-full" />
+      </div>
     </div>
   );
 }
